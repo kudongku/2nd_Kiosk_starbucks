@@ -5,8 +5,8 @@ import java.util.Scanner;
 public class Order {
     //order class 는 3개의 필드를 가진다. 1.총 메뉴 목록 2. 장바구니 목록 3. 음료 종류 목록
     private final ArrayList<Drink> drinkList = new ArrayList<>();
-    private final ArrayList<Drink> cartList = new ArrayList<>();
-    private final ArrayList<String> drink_typeList = new ArrayList<>();
+    private ArrayList<Drink> cartList = new ArrayList<>();
+    private final ArrayList<Category> drink_typeList = new ArrayList<>();
 
     //메소드는 public 에서 private 으로 나열
     public void printLine() {
@@ -24,11 +24,15 @@ public class Order {
     }
     public void printCategory() { //메인 메뉴판
         printLine();
-        System.out.println("아래 메뉴판을 보시고 메뉴를 골라 입력해주세요.\n[ 음료 카테고리 ]");
+        System.out.println("아래 메뉴판을 보시고 카테고리를 골라 입력해주세요.\n\n[ 음료 카테고리 ]");
 
         //음료 종류 출력
         for (int i = 0; i < drink_typeList.size(); i++) {
-            System.out.println(i + 1 + ". " + drink_typeList.get(i));
+            StringBuilder temp = new StringBuilder(drink_typeList.get(i).name);
+
+            temp.append(" ".repeat(Math.max(0, 10 - temp.length())));
+
+            System.out.println(i+1+". "+temp+"| "+drink_typeList.get(i).explanation);
         }
 
         //메뉴 옵션 출력 메소드
@@ -61,13 +65,27 @@ public class Order {
             System.out.println("     " + drink.name);
             total_price+=drink.price;
         }
-        System.out.println("이 나왔습니다.\n금액은 총 "+total_price+"원 입니다.");
-        endOrder();
+        System.out.println("이 나왔습니다.\n금액은 총 "+total_price+"원 입니다.\n계산하시겠습니까?\n1.계산\n2.더 주문하기");
+        boolean confirmed = (getNum()==1);
+        if(confirmed){
+            endOrder();
+        }else{
+            printCategory();
+        }
+
     }
 
     private void endOrder() {
         printLine();
-        System.out.println("이용해 주셔서 감사합니다. 땡큐");
+        System.out.println("주문을 종료하시겠습니까?\n1.종료\n2.새로 주문하기");
+        boolean confirmed = (getNum()==1);
+        if(confirmed){
+             System.out.println("이용해 주셔서 감사합니다. 땡큐");
+             System.exit(0);
+        }else{
+            cartList = new ArrayList<>();
+            printCategory();
+        }
     }
 
     private void printCart() {
@@ -117,14 +135,17 @@ public class Order {
 
     private void printTypeDrink(int inputNum) {
         printLine();
-        System.out.println("[ "+drink_typeList.get(inputNum-1) +" 카테고리 ]");
+        System.out.println("아래 음료메뉴판을 보시고 음료를 골라 입력해주세요.\n\n[ "+drink_typeList.get(inputNum-1).name +" 카테고리 ]");
         ArrayList<Drink> type_drinkList = new ArrayList<>();
 
         for (Drink drink : drinkList) {
 
             if (drink.drink_type.equals(drink_typeList.get(inputNum - 1))) {
+                StringBuilder temp = new StringBuilder(drink.name);
+                temp.append(" ".repeat(Math.max(0, 10 - temp.length())));
+
                 type_drinkList.add(drink);
-                System.out.println(type_drinkList.size() + ". " + drink.name + "  " + drink.price + "  " + drink.explanation);
+                System.out.println(type_drinkList.size() + ". " + temp + "  | " + drink.price + "  | " + drink.explanation);
             }
 
         }
@@ -140,19 +161,24 @@ public class Order {
     }
 
     private void addToCart(Drink drink) {
+        StringBuilder temp = new StringBuilder(drink.name);
+        temp.append(" ".repeat(Math.max(0, 10 - temp.length())));
         printLine();
-        System.out.println(drink.name + " 이 장바구니에 담겼습니다.");
-        cartList.add(drink);
-        printOtherOption(1);
-        int num = getNum();
-        if(num == 9){
-            printCart();
+        System.out.println(temp + "  | " + drink.price + "  | " + drink.explanation+"\n위 메뉴를 장바구니에 추가하시겠습니까?\n1.확인\n2.취소");
+        boolean confirmed = (getNum()==1);
+        if(confirmed){
+            printLine();
+            System.out.println(drink.name + " 이 장바구니에 담겼습니다.");
+            cartList.add(drink);
+            printOtherOption(1);
+            int num = getNum();
+            if(num == 9){
+                printCart();
+            }else {
+                runOtherOption(num);
+            }
         }else {
-            runOtherOption(num);
+            printCategory();
         }
     }
-
-
-
-
 }

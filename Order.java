@@ -158,10 +158,19 @@ public class Order {
 
     private void printCart() {
         System.out.println("-----------------------------------\n[ 장바구니 목록 ] ");
+        Map<String, Integer> map = new HashMap<>();
         for(ArrayList<String> arr : cartList){
-            System.out.println(buildStr(arr.get(0))+buildStr(arr.get(1)));
+            String key = arr.get(0)+" "+arr.get(1);
+            if(map.containsKey(key)){
+                int tmep = map.get(key);
+                map.put(key, ++tmep);
+            }else{
+                map.put(key, 1);
+            }
         }
-
+        for(String str : map.keySet()){
+            System.out.println(buildStr(str.split(" ")[0]) + buildStr(str.split(" ")[1]) + map.get(str)+"개");
+        }
         printOtherOption(2);
         int num = getNum();
         runOtherOption(num);
@@ -170,12 +179,22 @@ public class Order {
     private void orderCart() {
         int total_price = 0;
         System.out.println("-----------------------------------\n고객님, 주문하신");
+        Map<String, Integer> map = new HashMap<>();
         for(ArrayList<String> arr : cartList){
-            System.out.print(buildStr("")+buildStr(arr.get(0))+buildStr(arr.get(1)));
+            String key = arr.get(0)+" "+arr.get(1);
+            if(map.containsKey(key)){
+                int tmep = map.get(key);
+                map.put(key, ++tmep);
+            }else{
+                map.put(key, 1);
+            }
+        }
+        for(String str : map.keySet()){
+            System.out.print(buildStr("")+buildStr(str.split(" ")[0]) + buildStr(str.split(" ")[1]) +buildStr(map.get(str)+"개") );
             for(Drink drink: drinkList){
-                if(drink.name.equals(arr.get(0))){
+                if(drink.name.equals(str.split(" ")[0])){
                     System.out.println(drink.price+"원");
-                    total_price += drink.price;
+                    total_price += drink.price*map.get(str);
                 }
             }
         }

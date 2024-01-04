@@ -1,11 +1,10 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Scanner;
+import java.util.*;
 
 public class Order {
     //order class 는 3개의 필드를 가진다. 1.총 메뉴 목록 2. 장바구니 목록 3. 음료 종류 목록
     private final ArrayList<Drink> drinkList = new ArrayList<>();
-    private ArrayList<Drink> cartList = new ArrayList<>();
+//    private ArrayList<Drink> cartList = new ArrayList<>();
+    private Map<Drink, Integer> cartList = new HashMap<>();
     private final ArrayList<Category> drink_typeList = new ArrayList<>();
 
     //메소드는 public 에서 private 으로 나열
@@ -61,9 +60,9 @@ public class Order {
         int total_price = 0;
         printLine();
         System.out.println("고객님, 주문하신");
-        for (Drink drink : cartList) {
+        for (Drink drink : cartList.keySet()) {
             System.out.println("     " + drink.name);
-            total_price+=drink.price;
+            total_price+=drink.price * cartList.get(drink);
         }
         System.out.println("이 나왔습니다.\n금액은 총 "+total_price+"원 입니다.\n계산하시겠습니까?\n1.계산\n2.더 주문하기");
         boolean confirmed = (getNum()==1);
@@ -83,7 +82,7 @@ public class Order {
              System.out.println("이용해 주셔서 감사합니다. 땡큐");
              System.exit(0);
         }else{
-            cartList = new ArrayList<>();
+            cartList = new HashMap<>();
             printCategory();
         }
     }
@@ -91,8 +90,9 @@ public class Order {
     private void printCart() {
         printLine();
         System.out.println(" [ 장바구니 목록 ] ");
-        for (Drink drink : cartList) {
-            System.out.println(drink.name);
+        for (Drink drink : cartList.keySet()) {
+            System.out.print(drink.name+ "     ");
+            System.out.println(cartList.get(drink));
         }
         printOtherOption(2);
         int num = getNum();
@@ -169,7 +169,12 @@ public class Order {
         if(confirmed){
             printLine();
             System.out.println(drink.name + " 이 장바구니에 담겼습니다.");
-            cartList.add(drink);
+
+            if(cartList.containsKey(drink)){
+                int val = cartList.get(drink);
+                cartList.put(drink, val+1);
+            }else cartList.put(drink, 1);
+
             printOtherOption(1);
             int num = getNum();
             if(num == 9){

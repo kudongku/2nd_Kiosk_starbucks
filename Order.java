@@ -3,8 +3,8 @@ import java.util.*;
 public class Order {
     //order class 는 3개의 필드를 가진다. 1.총 메뉴 목록 2. 장바구니 목록 3. 음료 종류 목록
     private final ArrayList<Drink> drinkList = new ArrayList<>();
-    private final ArrayList<ArrayList<String>> cartList = new ArrayList<>();
-    // cartList = [[drink_name, size],[drink_name, size],[drink_name, size]]
+    private final Map<String, Integer> cartList = new HashMap<>();
+    // cartList = {음료이름사이즈 : 개수}
     private final ArrayList<Drink_type> drink_typeList = new ArrayList<>();
 
     private int getNum() {
@@ -141,11 +141,13 @@ public class Order {
                 "\n1.확인\n2.취소");
         boolean confirmed = (getNum()==1);
         if(confirmed){
-            System.out.println("-----------------------------------\n"+drinkName + size + " 이 장바구니에 담겼습니다.");
-            ArrayList<String> tempArr = new ArrayList<>();
-            tempArr.add(drinkName);
-            tempArr.add(size);
-            cartList.add(tempArr);
+            System.out.println("-----------------------------------\n"+drinkName+"   " + size + " 이 장바구니에 담겼습니다.");
+            if(cartList.containsKey(drinkName+" "+size)){
+                int temp = cartList.get(drinkName+" "+size);
+                cartList.put(drinkName+" "+size, ++temp);
+            }else{
+                cartList.put(drinkName+" "+size, 1);
+            }
 
             printOtherOption(1);
             int num = getNum();
@@ -158,18 +160,8 @@ public class Order {
 
     private void printCart() {
         System.out.println("-----------------------------------\n[ 장바구니 목록 ] ");
-        Map<String, Integer> map = new HashMap<>();
-        for(ArrayList<String> arr : cartList){
-            String key = arr.get(0)+" "+arr.get(1);
-            if(map.containsKey(key)){
-                int tmep = map.get(key);
-                map.put(key, ++tmep);
-            }else{
-                map.put(key, 1);
-            }
-        }
-        for(String str : map.keySet()){
-            System.out.println(buildStr(str.split(" ")[0]) + buildStr(str.split(" ")[1]) + map.get(str)+"개");
+        for(String str: cartList.keySet()){
+            System.out.println(buildStr(str.split(" ")[0]) + buildStr(str.split(" ")[1]) + cartList.get(str)+"개");
         }
         printOtherOption(2);
         int num = getNum();
@@ -179,25 +171,16 @@ public class Order {
     private void orderCart() {
         int total_price = 0;
         System.out.println("-----------------------------------\n고객님, 주문하신");
-        Map<String, Integer> map = new HashMap<>();
-        for(ArrayList<String> arr : cartList){
-            String key = arr.get(0)+" "+arr.get(1);
-            if(map.containsKey(key)){
-                int tmep = map.get(key);
-                map.put(key, ++tmep);
-            }else{
-                map.put(key, 1);
-            }
-        }
-        for(String str : map.keySet()){
-            System.out.print(buildStr("")+buildStr(str.split(" ")[0]) + buildStr(str.split(" ")[1]) +buildStr(map.get(str)+"개") );
+        for(String str: cartList.keySet()){
+            System.out.print(buildStr("")+buildStr(str.split(" ")[0]) + buildStr(str.split(" ")[1]) +buildStr(cartList.get(str)+"개"));
             for(Drink drink: drinkList){
                 if(drink.name.equals(str.split(" ")[0])){
                     System.out.println(drink.price+"원");
-                    total_price += drink.price*map.get(str);
+                    total_price += drink.price*cartList.get(str);
                 }
             }
         }
+
         System.out.println("이 나왔습니다.\n금액은 총 "+total_price+"원 입니다.\n계산하시겠습니까?\n0.계산\n8.더 주문하기");
         runOtherOption(getNum());
     }

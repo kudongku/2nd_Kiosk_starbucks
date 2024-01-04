@@ -3,9 +3,9 @@
 
 ## 구현과정
 1. 깃헙에 레포지토리 생성
-    1. ![img.png](img.png)
+    1. ![img.png](.idea/img.png)
 2. 데스크탑에 git clone하기
-   1. ![img_1.png](img_1.png)
+   1. ![img_1.png](.idea/img_1.png)
 3. 리드미에 구현지침 작성하기
 4. 구현지침을 보고 구현 순서 목록 작성하기
 5. 초안으로 구현하기

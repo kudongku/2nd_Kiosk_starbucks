@@ -1,8 +1,8 @@
-public class Drink_type {
+public class DrinkType {
     public String name;
     public String explanation;
 
-    public Drink_type(String name, String explanation) {
+    public DrinkType(String name, String explanation) {
         this.name = name;
         this.explanation = explanation;
     }

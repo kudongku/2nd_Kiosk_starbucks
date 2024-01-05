@@ -5,28 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ef06b407-be20-40b0-949f-5ebc13dfc801" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Drink_sized.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Kiosk_starbucks.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Category.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Drink.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Menu.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Order.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Kiosk_starbucks/Category.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Kiosk_starbucks/Drink.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Kiosk_starbucks/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Kiosk_starbucks/Menu.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Kiosk_starbucks/Order.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Kiosk_starbucks/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Drink.java" beforeDir="false" afterPath="$PROJECT_DIR$/Drink.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Drink_sized.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Drink_type.java" beforeDir="false" afterPath="$PROJECT_DIR$/DrinkType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img.png" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/img7.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img_1.png" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/img_8.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img_2.png" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/img_2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img_3.png" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/img_3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img_4.png" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/img_4.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img_5.png" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/img_5.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img_6.png" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/img_6.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Kiosk_starbucks/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Kiosk_starbucks/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Kiosk_starbucks/Drink.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Kiosk_starbucks/Drink.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Kiosk_starbucks/Drink_sized.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Kiosk_starbucks/Drink_type.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Kiosk_starbucks/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Kiosk_starbucks/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Kiosk_starbucks/Order.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Kiosk_starbucks/Order.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Kiosk_starbucks/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Kiosk_starbucks/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Kiosk_starbucks/img.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Kiosk_starbucks/img_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Kiosk_starbucks/img_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Kiosk_starbucks/img_3.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,9 +62,10 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "jdk.selected.JAVA_MODULE": "openjdk-21",
     "last_opened_file_path": "/Users/kudonghyun/Desktop/everyThingEveryWhereAllAtOnes/Kiosk_starbucks",
-    "onboarding.tips.debug.path": "/Users/kudonghyun/Desktop/everyThingEveryWhereAllAtOnes/Kiosk_starbucks/media/src/Main.java"
+    "onboarding.tips.debug.path": "/Users/kudonghyun/Desktop/everyThingEveryWhereAllAtOnes/Kiosk_starbucks/untitled/src/Main.java"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -100,6 +103,11 @@
           <url>file://$PROJECT_DIR$/media/src/Main.java</url>
           <line>13</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/untitled/src/Main.java</url>
+          <line>13</line>
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

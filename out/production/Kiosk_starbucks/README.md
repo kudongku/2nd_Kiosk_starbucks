@@ -1,13 +1,27 @@
 # Kiosk_starbucks
+# 중요 
+> 메인에서 어떻게 코드가 진행되는지 플로우는 보여줘야함
+> 
+>order 클래스는 진짜 order에 관련된 내용만 담아야함
+> 
+> 메소드 정리하고 메인에 플로우 넣는 방향으로 진행 
+> 
 스타벅스의 키오스크를 재현
+예외처리 해야되고, 필드와 메소드 정리해줘야함
 ## 구현 결과
-![img.png](img.png)
+![img.png](.idea/img7.png)
 
-![img_1.png](img_1.png)
+![img_1.png](.idea/img_8.png)
 
-![img_2.png](img_2.png)
+![img_2.png](.idea/img_2.png)
 
-![img_3.png](img_3.png)
+![img_3.png](.idea/img_3.png)
+
+![img_4.png](.idea/img_4.png)
+
+![img_5.png](.idea/img_5.png)
+
+![img_6.png](.idea/img_6.png)
 ## 구현과정
 1. 깃헙에 레포지토리 생성
     1. ![img.png](.idea/img.png)

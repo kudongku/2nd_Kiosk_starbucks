@@ -1,7 +1,5 @@
 package Menu;
 
-import Menu.Menu;
-
 public class Cake extends Menu {
     private final int price;
 

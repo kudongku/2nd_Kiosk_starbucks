@@ -1,3 +1,4 @@
+import Menu.Cake;
 import Menu.Drink;
 import Menu.DrinkType;
 
@@ -5,26 +6,13 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.Scanner;
 
-public class Main {
+public class StarbucksApplication {
+    //order 인스턴스 생성
+    private static final Order order = new Order();
     public static void main(String[] args) {
-        //order 인스턴스 생성
-        Order order = new Order();
+        //order 인스턴스에 메뉴들을 세팅해준다.
+        setMenu();
 
-        //드링크 타입 인스턴스 생성
-        DrinkType coffeeVar = new DrinkType("커피베리에이션", "커피를 활용한 음료입니다.");
-        DrinkType teaVar = new DrinkType("티베리에이션", "티를 활용한 음료입니다.");
-        DrinkType blended = new DrinkType("블렌디드", "시원하고 단맛을 자랑하는 음료입니다.");
-
-        //order.open 은 order 의 drinkList 필드에 drink 인스턴스들을 넣는다. 추가로, drinkList 를 순회하며 drinkType 리스트에도 인스턴스들을 넣는다.
-        order.open(new Drink("아메리카노", "에스프레소에 물을 탄 커피", 4500, coffeeVar),
-                new Drink("허니블랙티", "꿀을 탄 블랙티", 4000, teaVar),
-                new Drink("바나나요거트", "바나나를 넣은 요거트", 5000, blended),
-                new Drink("카페라테", "에스프레소에 우유를 탄 커피", 4500, coffeeVar),
-                new Drink("콜드브류", "저온으로 오랫동안 추출한 커피", 5000, coffeeVar),
-                new Drink("유자민트티", "유자청을 첨가한 민트티", 4500, teaVar),
-                new Drink("얼그레이티", "에스프레소에 우유를 탄 커피", 3500, teaVar),
-                new Drink("자바칩프라푸치노", "자바칩을 넣은 프라푸치노", 6000, blended),
-                new Drink("망고스무디", "망고를 갈아넣은 스무디", 5500, blended));
 
         System.out.println("""
              -----------------------------------
@@ -40,9 +28,10 @@ public class Main {
                     [ 음료 카테고리 ]""");
 
             //getDrinkTypeList()는 drinkType 리스트를 리턴해준다.
-            for (int i = 0; i < order.getDrinkTypeList().size(); i++) {
-                System.out.println(i+1+". "+(order.getDrinkTypeList().get(i).name)+
-                        "   "+order.getDrinkTypeList().get(i).explanation);
+            ArrayList<DrinkType> getDrinkTypeList = order.getDrinkTypeList();
+            for (int i = 0; i < getDrinkTypeList.size(); i++) {
+                System.out.println(i+1+". "+(getDrinkTypeList.get(i).getName())+
+                        "   "+getDrinkTypeList.get(i).getExplanation());
             }
 
             System.out.print("""
@@ -57,12 +46,25 @@ public class Main {
             Scanner sc = new Scanner(System.in);
             int inputNum = sc.nextInt();
 
-            //사용자가 카테고리 숫자를 입력했을 경우, 예외처리는 while 반복문을 계속 순환하는 것으로 처리
-            if(inputNum<=order.getDrinkTypeList().size()&&inputNum!=0){
+
+            if(inputNum==0){
+                System.out.print("""
+                        -----------------------------------
+                        종료를 원하시면 숫자 '1'을
+                        더 주문하시기를 원하시면 아무거나 입력하세요
+
+                        숫자를 입력하세요:""");
+
+                if(sc.nextInt()==1){
+                    hasFinishedOrder = true;
+                }
+            }
+            else if(inputNum<=order.getDrinkTypeList().size()){
+                String chosenDrinkName = order.getDrinkTypeList().get(inputNum-1).getName();
                 //어떤 카테고리를 입력했는지 출력
                 System.out.println("-----------------------------------\n" +
                         "아래 음료메뉴판을 보시고 음료를 골라 입력해주세요.\n\n[ "+
-                        order.getDrinkTypeList().get(inputNum-1).name +" 카테고리 ]");
+                        chosenDrinkName+" 카테고리 ]");
 
                 //선택한 카테고리 안 drink 리스트를 가져와주는 메소드
                 ArrayList<Drink> drinkListByType = order.getDrinkList(inputNum);
@@ -165,10 +167,11 @@ public class Main {
 
                     //종료를 원할경우 hasFinishedOrder 값을 true 로 바꿔준다.
                     if(sc.nextInt()==1){
-                        System.out.print("-----------------------------------\n" +
-                                "감사합니다, 결제가 정상적으로 처리되었습니다." +
-                                "\n새로 주문하려면 숫자'1'을 누르시고, 종료하시려면 아무거나 입력하세요\n" +
-                                "숫자를 입력하세요 : ");
+                        System.out.print("""
+                                -----------------------------------
+                                감사합니다, 결제가 정상적으로 처리되었습니다.
+                                새로 주문하려면 숫자'1'을 누르시고, 종료하시려면 아무거나 입력하세요
+                                숫자를 입력하세요 :\s""");
 
                         if(sc.nextInt()==1){
                             order.emptyOutCart();
@@ -176,19 +179,6 @@ public class Main {
 
                     }
 
-                }
-
-            }
-            else if(inputNum==0){
-                System.out.print("""
-                        -----------------------------------
-                        종료를 원하시면 숫자 '1'을
-                        더 주문하시기를 원하시면 아무거나 입력하세요
-
-                        숫자를 입력하세요:""");
-
-                if(sc.nextInt()==1){
-                    hasFinishedOrder = true;
                 }
 
             }
@@ -200,4 +190,34 @@ public class Main {
 
         System.out.println("-----------------------------------\n이용해주셔서 감사합니다.");
     }
+
+    public static void setMenu(){
+        //드링크 타입 인스턴스 생성
+        DrinkType coffeeVar = new DrinkType("커피베리에이션", "커피를 활용한 음료입니다.");
+        DrinkType teaVar = new DrinkType("티베리에이션", "티를 활용한 음료입니다.");
+        DrinkType blended = new DrinkType("블렌디드", "시원하고 단맛을 자랑하는 음료입니다.");
+
+        ArrayList<Drink> drinkList = new ArrayList<>();
+
+        drinkList.add(new Drink("아메리카노", "에스프레소에 물을 탄 커피", 4500, coffeeVar));
+        drinkList.add(new Drink("허니블랙티", "꿀을 탄 블랙티", 4000, teaVar));
+        drinkList.add(new Drink("바나나요거트", "바나나를 넣은 요거트", 5000, blended));
+        drinkList.add(new Drink("카페라테", "에스프레소에 우유를 탄 커피", 4500, coffeeVar));
+        drinkList.add(new Drink("콜드브류", "저온으로 오랫동안 추출한 커피", 5000, coffeeVar));
+        drinkList.add(new Drink("유자민트티", "유자청을 첨가한 민트티", 4500, teaVar));
+        drinkList.add(new Drink("얼그레이티", "에스프레소에 우유를 탄 커피", 3500, teaVar));
+        drinkList.add(new Drink("자바칩프라푸치노", "자바칩을 넣은 프라푸치노", 6000, blended));
+        drinkList.add(new Drink("망고스무디", "망고를 갈아넣은 스무디", 5500, blended));
+
+        ArrayList<Cake> cakeList = new ArrayList<>();
+
+        cakeList.add(new Cake("생크림케이크", "촉촉한 초콜릿 생크림이 들어간 케이크", 7000));
+        cakeList.add(new Cake("고구마케이크", "꿀고구마가 들어간 생크림 케이크", 7500));
+        cakeList.add(new Cake("쇼콜라케이크", "라즈베리가 들어간 쇼콜라 케이크", 8000));
+        cakeList.add(new Cake("티라미수케이크", "마스카포네 티라미수 케이크", 8000));
+
+        //order.open 은 order 의 drinkList 필드에 drink 인스턴스들을 넣는다. 추가로, drinkList 를 순회하며 drinkType 리스트에도 인스턴스들을 넣는다.
+        order.open(drinkList, cakeList);
+    }
+
 }

@@ -1,11 +1,19 @@
 package Menu;
 
 public class DrinkType {
-    public String name;
-    public String explanation;
+    private final String name;
+    private final String explanation;
 
     public DrinkType(String name, String explanation) {
         this.name = name;
         this.explanation = explanation;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getExplanation() {
+        return explanation;
     }
 }

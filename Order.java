@@ -1,3 +1,4 @@
+import Menu.Cake;
 import Menu.Drink;
 import Menu.DrinkType;
 
@@ -6,14 +7,25 @@ import java.util.*;
 public class Order {
     //order class 는 3개의 필드를 가진다. 1.총 메뉴 목록 2. 장바구니 목록 3. 음료 종류 목록
     private final ArrayList<Drink> drinkList = new ArrayList<>();
+    private final ArrayList<Cake> cakeList = new ArrayList<>();
     private final Map<String, Integer> cartList = new HashMap<>();
     // cartList = {음료이름사이즈 : 개수}
     private final ArrayList<DrinkType> drinkTypeList = new ArrayList<>();
     private final ArrayList<Map<String, Integer>> payedList = new ArrayList<>();
 
-    public void open(Drink... drinks) {
-        drinkList.addAll(Arrays.asList(drinks));
-        for (Drink d : drinkList) {//drinkType 또한 리스트에 추가한다.
+    public ArrayList<Drink> getDrinkList() {
+        return drinkList;
+    }
+
+    public ArrayList<Cake> getCakeList() {
+        return cakeList;
+    }
+
+    public void open(ArrayList<Drink> listA, ArrayList<Cake> listB) {
+        this.drinkList.addAll(listA);
+        this.cakeList.addAll(listB);
+
+        for (Drink d : this.drinkList) {//drinkType 또한 리스트에 추가한다.
 
             if (!drinkTypeList.contains(d.getDrinkType())) {
                 drinkTypeList.add(d.getDrinkType());

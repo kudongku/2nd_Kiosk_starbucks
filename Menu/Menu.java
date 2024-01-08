@@ -1,8 +1,8 @@
 package Menu;
 
 public class Menu {
-    private String name;
-    private String explanation;
+    private final String name;
+    private final String explanation;
 
     public Menu(String name, String explanation) {
         this.name = name;

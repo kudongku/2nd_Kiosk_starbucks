@@ -1,7 +1,5 @@
 package Menu;
 
-import Menu.Menu;
-
 public class Drink extends Menu {
     private final int price;
     private final DrinkType drinkType;
@@ -18,4 +16,6 @@ public class Drink extends Menu {
     public DrinkType getDrinkType() {
         return drinkType;
     }
+
+
 }

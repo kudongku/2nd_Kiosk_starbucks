@@ -107,7 +107,7 @@ public class Main {
                     order.addToCart(drinkListByType.get(inputNum2-1), size);
                 }
 
-            }else if(inputNum==8){
+            }else if(inputNum==8){//총 구매내역 조회하기
                 System.out.println("-----------------------------------\n" +
                         "[ 총 구매내역 조회 ] ");
 
@@ -123,7 +123,7 @@ public class Main {
 
                 }
 
-                System.out.println("\n 총 금액은 " + order.getTotalBill() + " 원 입니다.");
+                System.out.println("\n총 금액은 " + order.getTotalBill() + " 원 입니다.");
             }else if(inputNum==9){//장바구니 번호를 입력받을 경우
                 System.out.println("-----------------------------------\n" +
                         "[ 장바구니 목록 ] ");
@@ -154,16 +154,21 @@ public class Main {
                     }
 
                     //order.getTheBill() 은 카트 리스트의 Key 값 안에 있는 drink 이름을 drink 리스트에서 찾아서 가격을 사이즈를 고려해서 조회해준다.
-                    System.out.print("이 나왔습니다.\n금액은 총 " + order.getTheBill() + "원 입니다.\n" +
+                    System.out.print("이 나왔습니다.\n\n금액은 총 " + order.getTheBill() + "원 입니다.\n\n" +
                             "계산하시겠습니까?\n\n계산을 원하시면 숫자 '1'을\n더 주문하시기를 원하시면 아무거나 입력하세요\n" +
                             "\n숫자를 입력하세요: ");
 
                     //종료를 원할경우 hasFinishedOrder 값을 true 로 바꿔준다.
                     if(sc.nextInt()==1){
-                        System.out.println("감사합니다, 고객님. \n새로 주문하려면 숫자'1'을 누르세요. \n종료하시려면 아무거나 입력하세요");
+                        System.out.print("-----------------------------------\n" +
+                                "감사합니다, 결제가 정상적으로 처리되었습니다." +
+                                "\n새로 주문하려면 숫자'1'을 누르시고, 종료하시려면 아무거나 입력하세요\n" +
+                                "숫자를 입력하세요 : ");
+
                         if(sc.nextInt()==1){
                             order.emptyOutCart();
                         }else hasFinishedOrder = true;
+
                     }
 
                 }
@@ -183,7 +188,9 @@ public class Main {
             }else{ // 선택지 이외의 숫자를 입력할 경우
                 System.out.println("\n숫자를 정확히 입력하세요!!!");
             }
+
         }
+
         System.out.println("이용해주셔서 감사합니다.");
     }
 }

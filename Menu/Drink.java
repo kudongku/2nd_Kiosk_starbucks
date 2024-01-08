@@ -1,4 +1,8 @@
-public class Drink extends Menu{
+package Menu;
+
+import Menu.Menu;
+
+public class Drink extends Menu {
     private final int price;
     private final DrinkType drinkType;
     public Drink(String name, String explanation, int price, DrinkType drink_type) {

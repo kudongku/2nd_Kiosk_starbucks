@@ -1,4 +1,8 @@
-public class Cake extends Menu{
+package Menu;
+
+import Menu.Menu;
+
+public class Cake extends Menu {
     private final int price;
 
     public Cake(String name, String explanation, int price) {

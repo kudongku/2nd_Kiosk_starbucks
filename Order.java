@@ -1,3 +1,6 @@
+import Menu.Drink;
+import Menu.DrinkType;
+
 import java.util.*;
 
 public class Order {

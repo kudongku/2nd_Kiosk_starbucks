@@ -1,3 +1,5 @@
+package Menu;
+
 public class DrinkType {
     public String name;
     public String explanation;

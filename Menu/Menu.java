@@ -1,3 +1,5 @@
+package Menu;
+
 public class Menu {
     private String name;
     private String explanation;

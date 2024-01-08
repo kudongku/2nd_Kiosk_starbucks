@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Main {
@@ -44,6 +45,7 @@ public class Main {
             System.out.print("""
                 
                 [ 다른 선택지 ]
+                8. 구매내역 조회하기
                 9. 장바구니 가기
                 0. 주문을 종료하기
                 
@@ -105,6 +107,23 @@ public class Main {
                     order.addToCart(drinkListByType.get(inputNum2-1), size);
                 }
 
+            }else if(inputNum==8){
+                System.out.println("-----------------------------------\n" +
+                        "[ 총 구매내역 조회 ] ");
+
+                for (Map<String, Integer> map: order.getPayedList()) {
+                    System.out.println("\n[ 개별 구매내역 조회 ] ");
+
+                    for (String str : map.keySet()) {
+                        System.out.println(str.split(" ")[0]+"   "+
+                                str.split(" ")[1]+"   "+
+                                map.get(str) + "개" +
+                                "   "+order.getPrice(str)+"원");
+                    }
+
+                }
+
+                System.out.println("\n 총 금액은 " + order.getTotalBill() + " 원 입니다.");
             }else if(inputNum==9){//장바구니 번호를 입력받을 경우
                 System.out.println("-----------------------------------\n" +
                         "[ 장바구니 목록 ] ");
@@ -141,12 +160,17 @@ public class Main {
 
                     //종료를 원할경우 hasFinishedOrder 값을 true 로 바꿔준다.
                     if(sc.nextInt()==1){
-                        hasFinishedOrder = true;
+                        System.out.println("감사합니다, 고객님. \n새로 주문하려면 숫자'1'을 누르세요. \n종료하시려면 아무거나 입력하세요");
+                        if(sc.nextInt()==1){
+                            order.emptyOutCart();
+                        }else hasFinishedOrder = true;
                     }
 
                 }
+
             }else if(inputNum==0){
                 System.out.print("""
+                        -----------------------------------
                         종료를 원하시면 숫자 '1'을
                         더 주문하시기를 원하시면 아무거나 입력하세요
 

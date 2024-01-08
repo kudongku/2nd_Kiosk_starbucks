@@ -3,9 +3,10 @@ import java.util.*;
 public class Order {
     //order class 는 3개의 필드를 가진다. 1.총 메뉴 목록 2. 장바구니 목록 3. 음료 종류 목록
     private final ArrayList<Drink> drinkList = new ArrayList<>();
-    private Map<String, Integer> cartList = new HashMap<>();
+    private final Map<String, Integer> cartList = new HashMap<>();
     // cartList = {음료이름사이즈 : 개수}
     private final ArrayList<DrinkType> drinkTypeList = new ArrayList<>();
+    private final ArrayList<Map<String, Integer>> payedList = new ArrayList<>();
 
     public void open(Drink... drinks) {
         drinkList.addAll(Arrays.asList(drinks));
@@ -58,6 +59,19 @@ public class Order {
         return total_price;
     }
 
+    public int getTotalBill() {
+        int total_price = 0;
+
+        for(Map<String, Integer> map : payedList){
+            for (String str : map.keySet()) {
+                total_price += getPrice(str) * map.get(str);
+            }
+        }
+
+
+        return total_price;
+    }
+
     public Map<String, Integer> getCartList() {
         return cartList;
     }
@@ -80,6 +94,16 @@ public class Order {
             }
 
         return size_price;
+    }
+
+    public void emptyOutCart() {
+        Map<String, Integer> temp = new HashMap<>(cartList);
+        payedList.add(temp);
+        cartList.clear();
+    }
+
+    public ArrayList<Map<String, Integer>> getPayedList() {
+        return payedList;
     }
 }
 

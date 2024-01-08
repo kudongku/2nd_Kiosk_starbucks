@@ -3,7 +3,7 @@ import java.util.*;
 public class Order {
     //order class 는 3개의 필드를 가진다. 1.총 메뉴 목록 2. 장바구니 목록 3. 음료 종류 목록
     private final ArrayList<Drink> drinkList = new ArrayList<>();
-    private final Map<String, Integer> cartList = new HashMap<>();
+    private Map<String, Integer> cartList = new HashMap<>();
     // cartList = {음료이름사이즈 : 개수}
     private final ArrayList<DrinkType> drinkTypeList = new ArrayList<>();
 
@@ -52,21 +52,7 @@ public class Order {
         int total_price = 0;
 
         for (String str : cartList.keySet()) {
-            int size_price = 0;
-
-            if (str.split(" ")[1].equals("그란데")) {
-                size_price += 500;
-            } else if (str.split(" ")[1].equals("벤티")) {
-                size_price += 1000;
-            }
-
-            for (Drink drink : drinkList) {
-
-                if (drink.name.equals(str.split(" ")[0])) {
-                    total_price += (size_price+drink.price) * cartList.get(str);
-                }
-
-            }
+            total_price += getPrice(str) * cartList.get(str);
         }
 
         return total_price;

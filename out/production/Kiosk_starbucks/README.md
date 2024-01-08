@@ -1,4 +1,7 @@
 # Kiosk_starbucks
+## 어떤 것을 더 구현해야 하는가
+> 1. menu 를 상속받는 cake 카테고리 만들기
+> 2. 객체 필드 모두 private 으로 처리하기
 # 구현은 어디까지 되었는가
 > 1. 주문하기
 >    1. Main을 실행하시면, 음료 카테고리가 출력되며 선택을 하실 수 있습니다.
@@ -29,6 +32,7 @@
 
 ![img_6.png](.idea/img_6.png)
 
+![img_7.png](.idea/img_7.png)
 ## 구현과정
 1. 깃헙에 레포지토리 생성
     1. ![img.png](.idea/img.png)

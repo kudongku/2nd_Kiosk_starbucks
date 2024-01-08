@@ -27,7 +27,7 @@ public class Main {
              -----------------------------------
              스타벅스에 오신걸 환영합니다.""");
 
-        //hasFinishedOrder 는 사용자의 입력값에 따라 true로 변한다.
+        //hasFinishedOrder 는 사용자의 입력값에 따라 true 로 변한다.
         boolean hasFinishedOrder = false;
         while(!hasFinishedOrder){
             System.out.println("""
@@ -66,8 +66,8 @@ public class Main {
 
                 //카테고리 안 drink 리스트를 출력
                 for (int i=0; i<drinkListByType.size(); i++) {
-                    System.out.println(i+1 + ". " +drinkListByType.get(i).name+
-                            "   "+drinkListByType.get(i).price+"   "+drinkListByType.get(i).explanation);
+                    System.out.println(i+1 + ". " + drinkListByType.get(i).getName() +
+                            "   "+ drinkListByType.get(i).getPrice() +"   "+ drinkListByType.get(i).getExplanation());
                 }
 
                 //예외는 while 반복문을 계속 순환하는 것으로 처리
@@ -82,7 +82,7 @@ public class Main {
                 //drink 번호를 입력했을 경우
                 if(inputNum2<=order.getDrinkTypeList().size()&&inputNum2!=0){
                     System.out.println("-----------------------------------\n"+
-                            drinkListByType.get(inputNum2-1).name +
+                            drinkListByType.get(inputNum2 - 1).getName() +
                             "\n\n사이즈를 선택해주세요." +
                             " \n1.톨 (기본료 그대로)\n2.그란데 (500원 추가)\n3.벤티 (1000원 추가)" +
                             "\n\n주문을 취소하시려면 1,2,3 외에 다른 숫자를 입력하세요 (카테고리로 이동합니다.)\n\n숫자를 입력하세요 :");
@@ -102,12 +102,13 @@ public class Main {
                     }
 
                     System.out.println("-----------------------------------\n"+
-                            drinkListByType.get(inputNum2-1).name+" " + size + "  장바구니에 담겼습니다.");
+                            drinkListByType.get(inputNum2 - 1).getName() +" " + size + "  장바구니에 담겼습니다.");
                     //카트는 Map 으로, key 에는 drink 이름과 사이즈가 합쳐지고, value 에는 개수가 카운트 된다.
                     order.addToCart(drinkListByType.get(inputNum2-1), size);
                 }
 
-            }else if(inputNum==8){//총 구매내역 조회하기
+            }
+            else if(inputNum==8){//총 구매내역 조회하기
                 System.out.println("-----------------------------------\n" +
                         "[ 총 구매내역 조회 ] ");
 
@@ -124,7 +125,8 @@ public class Main {
                 }
 
                 System.out.println("\n총 금액은 " + order.getTotalBill() + " 원 입니다.");
-            }else if(inputNum==9){//장바구니 번호를 입력받을 경우
+            }
+            else if(inputNum==9){//장바구니 번호를 입력받을 경우
                 System.out.println("-----------------------------------\n" +
                         "[ 장바구니 목록 ] ");
 
@@ -173,7 +175,8 @@ public class Main {
 
                 }
 
-            }else if(inputNum==0){
+            }
+            else if(inputNum==0){
                 System.out.print("""
                         -----------------------------------
                         종료를 원하시면 숫자 '1'을
@@ -185,12 +188,13 @@ public class Main {
                     hasFinishedOrder = true;
                 }
 
-            }else{ // 선택지 이외의 숫자를 입력할 경우
+            }
+            else{ // 선택지 이외의 숫자를 입력할 경우
                 System.out.println("\n숫자를 정확히 입력하세요!!!");
             }
 
         }
 
-        System.out.println("이용해주셔서 감사합니다.");
+        System.out.println("-----------------------------------\n이용해주셔서 감사합니다.");
     }
 }

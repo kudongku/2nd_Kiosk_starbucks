@@ -1,6 +1,6 @@
 public class Drink extends Menu{
-    int price;
-    DrinkType drinkType;
+    private final int price;
+    private final DrinkType drinkType;
     public Drink(String name, String explanation, int price, DrinkType drink_type) {
         super(name, explanation);
         this.price = price;
@@ -9,5 +9,9 @@ public class Drink extends Menu{
 
     public int getPrice() {
         return price;
+    }
+
+    public DrinkType getDrinkType() {
+        return drinkType;
     }
 }

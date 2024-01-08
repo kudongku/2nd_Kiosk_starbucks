@@ -12,8 +12,8 @@ public class Order {
         drinkList.addAll(Arrays.asList(drinks));
         for (Drink d : drinkList) {//drinkType 또한 리스트에 추가한다.
 
-            if (!drinkTypeList.contains(d.drinkType)) {
-                drinkTypeList.add(d.drinkType);
+            if (!drinkTypeList.contains(d.getDrinkType())) {
+                drinkTypeList.add(d.getDrinkType());
             }
 
         }
@@ -28,7 +28,7 @@ public class Order {
 
         for (Drink drink : drinkList) {
 
-            if (drink.drinkType.equals(drinkTypeList.get(inputNum - 1))) {
+            if (drink.getDrinkType().equals(drinkTypeList.get(inputNum - 1))) {
                 drinkListByType.add(drink);
             }
 
@@ -38,7 +38,7 @@ public class Order {
     }
 
     public void addToCart(Drink orderedDrink, String size) {
-        String drinkName = orderedDrink.name;
+        String drinkName = orderedDrink.getName();
 
         if (cartList.containsKey(drinkName + " " + size)) {
             int temp = cartList.get(drinkName + " " + size);
@@ -87,8 +87,8 @@ public class Order {
 
             for (Drink drink : drinkList) {
 
-                if (drink.name.equals(str.split(" ")[0])) {
-                    size_price+=drink.price;
+                if (drink.getName().equals(str.split(" ")[0])) {
+                    size_price+= drink.getPrice();
                 }
 
             }

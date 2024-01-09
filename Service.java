@@ -125,7 +125,7 @@ public class Service {
         return getNumber();
     }
     public int printDrinks(int inputNum) {
-        String chosenDrinkTypeName = null;
+        String chosenDrinkTypeName;
         try {
             chosenDrinkTypeName = order.getDrinkTypeList().get(inputNum - 1).getName();
         } catch (IndexOutOfBoundsException e) {
@@ -182,7 +182,7 @@ public class Service {
 
     }
     public int getNumber() {
-        int num = -10;
+        int num;
         try{
             Scanner sc = new Scanner(System.in);
             num = sc.nextInt();

@@ -7,21 +7,13 @@ import Menu.DrinkType;
 import java.util.*;
 
 public class Order {
-    //order class 는 3개의 필드를 가진다. 1.총 메뉴 목록 2. 장바구니 목록 3. 음료 종류 목록
+    //order class 는 3개의 필드를 가진다. 1.음료 메뉴 목록 2.케이크 메뉴 목록 3.음료 종류 목록
     private final ArrayList<Drink> drinkList = new ArrayList<>();
     private final ArrayList<Cake> cakeList = new ArrayList<>();
-
     private final ArrayList<DrinkType> drinkTypeList = new ArrayList<>();
 
-    public ArrayList<Drink> getDrinkList() {
-        return drinkList;
-    }
 
-    public ArrayList<Cake> getCakeList() {
-        return cakeList;
-    }
-
-    public void open(ArrayList<Drink> listA, ArrayList<Cake> listB) {
+    public void addList(ArrayList<Drink> listA, ArrayList<Cake> listB) {
         this.drinkList.addAll(listA);
         this.cakeList.addAll(listB);
 
@@ -33,6 +25,15 @@ public class Order {
 
         }
     }
+    public ArrayList<Drink> getDrinkList() {
+        return drinkList;
+    }
+
+    public ArrayList<Cake> getCakeList() {
+        return cakeList;
+    }
+
+
 
     public ArrayList<DrinkType> getDrinkTypeList() {
         return drinkTypeList;

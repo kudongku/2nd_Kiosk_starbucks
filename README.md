@@ -1,9 +1,18 @@
 # Kiosk_starbucks
+## 플로우차트
+![img.png](.idea/flowchart.png)
+- 플로우차트는 StarbucksApplication 에 구현되어 있습니다.
+- 관련 메소드는 Service 에 구현되어 있습니다.
+## class간 관계도
+![img.png](.idea/classTree.png)
+- starbucksApplication은 servic에서 정보를 받습니다.
+- service는 나머지 클래스들과 정보를 주고 받습니다.
+- drink와 cake은 menu를 상속받습니다.
 ## 어떤 것을 더 구현해야 하는가
 > 1. menu 를 상속받는 cake 카테고리 만들기
 > 2. 객체 필드 모두 private 으로 처리하기
 > 3. ~~예외처리 하기~~
-> 4. ~~디렉토리 구분하기?~~ ㅇㄹ 깃테스트
+> 4. ~~디렉토리 구분하기?~~ 
 # 구현은 어디까지 되었는가
 > 1. 주문하기
 >    1. Main을 실행하시면, 음료 카테고리가 출력되며 선택을 하실 수 있습니다.

@@ -3,7 +3,7 @@
 > 1. menu 를 상속받는 cake 카테고리 만들기
 > 2. 객체 필드 모두 private 으로 처리하기
 > 3. ~~예외처리 하기~~
-> 4. ~~디렉토리 구분하기?~~
+> 4. ~~디렉토리 구분하기?~~ ㅇㄹ 깃테스트
 # 구현은 어디까지 되었는가
 > 1. 주문하기
 >    1. Main을 실행하시면, 음료 카테고리가 출력되며 선택을 하실 수 있습니다.
@@ -37,7 +37,7 @@ drink 는 drinkType 을 포함합니다.
 
 ![img_4.png](.idea/img_4.png)
 
-![img_5.png](.idea/img_5.png)
+![img_5.png ](.idea/img_5.png)
 
 ![img_6.png](.idea/img_6.png)
 

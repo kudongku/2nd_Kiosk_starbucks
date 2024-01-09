@@ -2,6 +2,7 @@ import Menu.Cake;
 import Menu.Drink;
 import Menu.DrinkType;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -10,7 +11,6 @@ public class Service {
     private final Order order = new Order();
     private final Cart cart = new Cart();
     private final Payed payed = new Payed();
-
 
     public void on() {
         System.out.println("""
@@ -43,6 +43,19 @@ public class Service {
 
         //order.open 은 order 의 drinkList 필드에 drink 인스턴스들을 넣는다. 추가로, drinkList 를 순회하며 drinkType 리스트에도 인스턴스들을 넣는다.
         order.open(drinkList, cakeList);
+    }
+    public int getNumber() {
+        int num = -10;
+        try{
+            Scanner sc = new Scanner(System.in);
+            num = sc.nextInt();
+        }catch(InputMismatchException i){
+            System.out.print("숫자를 입력하세요!!!! :");
+            num = getNumber();
+        }finally {
+            return num;
+        }
+
     }
 
     public int printCategory() {
@@ -104,8 +117,7 @@ public class Service {
                 "\n\n주문을 취소하시려면 1,2,3 외에 다른 숫자를 입력하세요 (카테고리로 이동합니다.)\n\n숫자를 입력하세요 :");
 
         //사이즈를 선택하도록
-        Scanner sc = new Scanner(System.in);
-        int inputNum3 = sc.nextInt();
+        int inputNum3 = getNumber();
 
         String size = null;
         if(inputNum3==1){
@@ -154,7 +166,7 @@ public class Service {
         }
         //order.getTheBill() 은 카트 리스트의 Key 값 안에 있는 drink 이름을 drink 리스트에서 찾아서 가격을 사이즈를 고려해서 조회해준다.
         System.out.print("입니다.\n\n금액은 총 " + getBills() + "원 입니다.\n\n" +
-                "계산하시겠습니까?\n\n계산을 원하시면 숫자 '1'을\n더 주문하시기를 원하시면 아무거나 입력하세요\n" +
+                "계산하시겠습니까?\n\n계산을 원하시면 숫자 '1'을\n더 주문하시기를 원하시면 아무 숫자나 입력하세요\n" +
                 "\n숫자를 입력하세요: ");
     }
 
@@ -174,12 +186,11 @@ public class Service {
         System.out.print("""
                         -----------------------------------
                         종료를 원하시면 숫자 '1'을
-                        더 주문하시기를 원하시면 아무거나 입력하세요
+                        더 주문하시기를 원하시면 아무 숫자나 입력하세요
 
                         숫자를 입력하세요:""");
 
-        Scanner sc = new Scanner(System.in);
-        if(sc.nextInt()==1){
+        if(getNumber()==1){
             System.exit(0);
         }
     }

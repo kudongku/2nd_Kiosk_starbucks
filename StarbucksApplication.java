@@ -1,6 +1,5 @@
 import Menu.Drink;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class StarbucksApplication {
     private static final Service service = new Service();
@@ -12,15 +11,14 @@ public class StarbucksApplication {
             //getDrinkTypeList()는 drinkType 리스트를 리턴해준다.
             int max = service.printCategory();
 
-            Scanner sc = new Scanner(System.in);
-            int inputNum = sc.nextInt();
+            int inputNum = service.getNumber();
 
             if(inputNum==0){
                 service.printEnd();
             }
             else if(inputNum<=max){ //음료카테고리를 입력시
                 ArrayList<Drink> drinkListByType = service.printDrinks(inputNum);
-                int inputNum2 = sc.nextInt();
+                int inputNum2 = service.getNumber();
 
                 //drink 번호를 입력했을 경우
                 if(inputNum2<=drinkListByType.size()&&inputNum2>0){
@@ -34,7 +32,7 @@ public class StarbucksApplication {
             else if(inputNum==9){//장바구니 번호를 입력받을 경우
                 service.printCartList();
 
-                if(sc.nextInt()==1){//결제 번호 입력
+                if(service.getNumber()==1){//결제 번호 입력
                     service.emptyOutCart();
                     service.printEnd();
                 }

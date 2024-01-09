@@ -1,3 +1,6 @@
+import Data.Cart;
+import Data.Order;
+import Data.Payed;
 import Menu.Cake;
 import Menu.Drink;
 import Menu.DrinkType;
@@ -52,10 +55,9 @@ public class Service {
         }catch(InputMismatchException i){
             System.out.print("숫자를 입력하세요!!!! :");
             num = getNumber();
-        }finally {
-            return num;
         }
 
+        return num;
     }
 
     public int printCategory() {

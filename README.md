@@ -5,13 +5,13 @@
 
 한판케이크는 조각케이크의 6배의 가격입니다.
 
-![img.png](change1.png)
+![img.png](.idea/change1.png)
 
-![img.png](img.png)
+![img.png](.idea/change2.png)
 
-![img_1.png](img_1.png)
+![img_1.png](.idea/change3.png)
 
-![img_2.png](img_2.png)
+![img_2.png](.idea/change4.png)
 ### 이 외에도 작은 디테일을들 디벨롭하였습니다.
 ## 플로우차트
 ![img.png](.idea/flowchart.png)

@@ -14,10 +14,15 @@ public class StarbucksApplication {
                 service.finishOrder();
             }
             else if(selectedCategoryNum==9){//장바구니 번호를 입력받을 경우
+                int cartOption = service.printCart();
 
-                if(service.printCart()==1){//결제 번호 입력
-                    service.emptyOutCart();
+                if(cartOption==1){//결제 번호 입력
+                    service.emptyOutCart(0);
                     service.finishOrder();
+                }else if(cartOption==2){//
+                    service.emptyOutCart(1);
+                }else if(cartOption==3){//
+                    service.cancelProductInCart();
                 }
 
             }

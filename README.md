@@ -1,5 +1,13 @@
 # Kiosk_starbucks
 ## 1차제출과 비교해서 무엇이 바뀌었는가
+### 장바구니 기능 추가
+장바구니에서 개별 제품을 삭제할 수도, 
+
+통쨰로 초기화할 수도 있습니다.
+
+![img.png](.idea/CartChange1.png)
+
+![img_1.png](.idea/CartChange2.png)
 ### 케이크 메뉴 추가
 케이크의  사이즈는  조각 케이크 한판 케이크입니다.
 

@@ -88,12 +88,20 @@ public class Service {
             System.exit(0);
         }
     }
-    public void emptyOutCart() {
-        System.out.print("""
+    public void emptyOutCart(int state) {
+        if(state==0){
+            System.out.print("""
                            -----------------------------------
                            감사합니다, 결제가 정상적으로 처리되었습니다.
                            """);
-        payed.emptyOutCart(cart);
+            payed.emptyOutCart(cart);
+        }else{
+            System.out.print("""
+                           -----------------------------------
+                           장바구니가 초기화되었습니다.
+                           """);
+            cart.clearCartList();
+        }
     }
     public void printTotalPayment() {
         System.out.println("-----------------------------------\n" +
@@ -123,7 +131,10 @@ public class Service {
         }
         //order.getTheBill() 은 카트 리스트의 Key 값 안에 있는 drink 이름을 drink 리스트에서 찾아서 가격을 사이즈를 고려해서 조회해준다.
         System.out.print("입니다.\n\n금액은 총 " + cart.getTheBill(order) + "원 입니다.\n\n" +
-                "계산하시겠습니까?\n\n계산을 원하시면 숫자 '1'을\n더 주문하시기를 원하시면 아무 숫자나 입력하세요\n" +
+                "계산하시겠습니까?\n\n계산을 원하시면 숫자 '1'을\n" +
+                "장바구니를 초기화하고 싶으시면 숫자 '2'를\n" +
+                "특정 제품을 삭제하고 싶으시면 숫자 '3'을\n" +
+                "더 주문하시기를 원하시면 아무 숫자나 입력하세요\n" +
                 "\n숫자를 입력하세요: ");
         return getNumber();
     }
@@ -254,6 +265,41 @@ public class Service {
                     cakename +" " + size + "  장바구니에 담겼습니다.");
             //카트는 Map 으로, key 에는 drink 이름과 사이즈가 합쳐지고, value 에는 개수가 카운트 된다.
             cart.addToCart(order.getCakeList().get(selectedCakeNum-1).getName(), size);
+        }
+    }
+
+    public void cancelProductInCart() {
+        System.out.println("""
+                -----------------------------------
+                [ 장바구니 목록 ]
+                
+                삭제를 원하시는 번호를 입력헤주세요
+                삭제를 원하시지 않는다면, 0번을 입력하세요.
+                """);
+        //장바구니 목록 출력, 장바구니의 key 값에는 drink 의 이름과 사이즈가 띄어쓰기 로 합쳐져서 split(" ")을 해준다.
+        int pointer = 1;
+        for (String str : cart.getCartList().keySet()) {
+            System.out.println(pointer+".  "+str.split(" ")[0]+"   "+
+                    str.split(" ")[1]+"   "+
+                    cart.getCartList().get(str) + "개" +
+                    "   "+order.getPrice(str)+"원");
+            pointer++;
+        }
+        System.out.print("숫자를 입력하세요 :");
+        int selectedForDelete = getNumber();
+        String keyToDelete = "";
+        if (selectedForDelete!=0&&selectedForDelete<pointer){
+            int pointer2 = 1;
+            for (String str : cart.getCartList().keySet()) {
+                if(pointer2==selectedForDelete){
+                    keyToDelete = str;
+                }
+                pointer2++;
+            }
+            cart.getCartList().remove(keyToDelete);
+            System.out.println("""
+                -----------------------------------
+                해당 상품이 삭제되었습니다.""");
         }
     }
 }

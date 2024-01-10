@@ -1,4 +1,6 @@
 # Kiosk_starbucks
+## 1차제출과 비교해서 무엇이 바뀌었는가
+
 ## 플로우차트
 ![img.png](.idea/flowchart.png)
 - 플로우차트는 StarbucksApplication 에 구현되어 있습니다.

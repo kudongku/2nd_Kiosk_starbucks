@@ -1,5 +1,6 @@
 package Data;
 
+import Menu.Cake;
 import Menu.Drink;
 
 import java.util.HashMap;
@@ -13,14 +14,13 @@ public class Cart {
         return cartList;
     }
 
-    public void addToCart(Drink orderedDrink, String size) {
-        String drinkName = orderedDrink.getName();
+    public void addToCart(String productName, String size) {
 
-        if (getCartList().containsKey(drinkName + " " + size)) {
-            int temp = cartList.get(drinkName + " " + size);
-            cartList.put(drinkName + " " + size, ++temp);
+        if (getCartList().containsKey(productName + " " + size)) {
+            int temp = cartList.get(productName + " " + size);
+            cartList.put(productName + " " + size, ++temp);
         } else {
-            cartList.put(drinkName + " " + size, 1);
+            cartList.put(productName + " " + size, 1);
         }
 
     }

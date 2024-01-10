@@ -24,6 +24,10 @@ public class StarbucksApplication {
             else if(selectedCategoryNum==8){//총 구매내역 조회하기
                 service.printTotalPayment();
             }
+            else if(selectedCategoryNum==4){//케이크 주문하기
+                int selectedCakeNum = service.printCakes();
+                service.printSize(selectedCakeNum);
+            }
             else{ //음료카테고리를 입력시
                 int selectedDrinkNum = service.printDrinks(selectedCategoryNum);
 

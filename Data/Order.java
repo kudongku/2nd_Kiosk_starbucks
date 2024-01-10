@@ -70,6 +70,20 @@ public class Order {
 
             }
 
+            if(size_price==0){
+
+                for (Cake cake : cakeList) {
+
+                    if (cake.getName().equals(str.split(" ")[0])) {
+                        size_price+= cake.getPrice();
+                    }
+
+                }
+                if (str.split(" ")[1].equals("한판")) {
+                    size_price *= 6;
+                }
+            }
+
         return size_price;
     }
 

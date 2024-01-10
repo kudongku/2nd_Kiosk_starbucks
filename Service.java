@@ -61,6 +61,9 @@ public class Service {
                     "   "+getDrinkTypeList.get(i).getExplanation());
         }
 
+        System.out.println(getDrinkTypeList.size()+1+". 케이크"+
+                "   스타벅스 특제 케이크의 달달한 맛을 느껴보세요");
+
         System.out.print("""
                 
                 [ 다른 선택지 ]
@@ -155,6 +158,11 @@ public class Service {
     }
     public void printSize(int selectedDrinkNum, int selectedCategoryNum) {
         ArrayList<Drink> drinkListByType = order.getDrinkList(selectedCategoryNum);
+
+        if(selectedDrinkNum>drinkListByType.size()){
+            return;
+        }
+
         System.out.print("-----------------------------------\n"+
                 drinkListByType.get(selectedDrinkNum - 1).getName() +
                 "\n\n사이즈를 선택해주세요." +
@@ -177,7 +185,7 @@ public class Service {
             System.out.println("-----------------------------------\n"+
                     drinkListByType.get(selectedDrinkNum - 1).getName() +" " + size + "  장바구니에 담겼습니다.");
             //카트는 Map 으로, key 에는 drink 이름과 사이즈가 합쳐지고, value 에는 개수가 카운트 된다.
-            cart.addToCart(drinkListByType.get(selectedDrinkNum-1), size);
+            cart.addToCart(drinkListByType.get(selectedDrinkNum-1).getName(), size);
         }
 
     }
@@ -194,4 +202,58 @@ public class Service {
         return num;
     }
 
+    public int printCakes() {
+        //어떤 카테고리를 입력했는지 출력
+        System.out.println("""
+                -----------------------------------
+                아래 케이크메뉴판을 보시고 케이크를 골라 입력해주세요.
+
+                [ 케이크 카테고리 ]""");
+
+        //카테고리 안 drink 리스트를 출력
+        for (int i = 0; i < order.getCakeList().size(); i++) {
+            System.out.println(i + 1 + ". " + order.getCakeList().get(i).getName() +
+                    "   " + order.getCakeList().get(i).getPrice() + "   " + order.getCakeList().get(i).getExplanation());
+        }
+
+        //예외는 while 반복문을 계속 순환하는 것으로 처리
+        System.out.print("""
+                                    
+                    카테고리로 나가고 싶으시면 케이크 숫자 외에 다른 숫자를 입력해주세요
+                                    
+                    숫자입력하기:""");
+        return getNumber();
+    }
+
+    public void printSize(int selectedCakeNum) {
+        String cakename;
+        try {
+            cakename = order.getCakeList().get(selectedCakeNum-1).getName();
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("범위 내의 숫자를 입력하세요!!!");
+            return;
+        }
+        System.out.print("-----------------------------------\n"+
+                cakename +
+                "\n\n사이즈를 선택해주세요." +
+                " \n1.조각\n2.한판(원래금액의 6배)" +
+                "\n\n주문을 취소하시려면 1,2 외에 다른 숫자를 입력하세요 (카테고리로 이동합니다.)\n\n숫자를 입력하세요 :");
+
+        //사이즈를 선택하도록
+        int selectedSize = getNumber();
+
+        String size = null;
+        if(selectedSize==1){
+            size="조각";
+        }else if(selectedSize==2){
+            size="한판";
+        }
+
+        if( size != null){
+            System.out.println("-----------------------------------\n"+
+                    cakename +" " + size + "  장바구니에 담겼습니다.");
+            //카트는 Map 으로, key 에는 drink 이름과 사이즈가 합쳐지고, value 에는 개수가 카운트 된다.
+            cart.addToCart(order.getCakeList().get(selectedCakeNum-1).getName(), size);
+        }
+    }
 }
